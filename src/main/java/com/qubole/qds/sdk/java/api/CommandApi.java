@@ -41,6 +41,13 @@ public interface CommandApi
     public HiveCommandBuilder hive();
 
     /**
+     * Corresponds to http://www.qubole.com/docs/submit-a-sql-command
+     *
+     * @return new builder
+     */
+    public SqlCommandBuilder sql();
+
+    /**
      * Corresponds to http://www.qubole.com/docs/submit-a-hadoop-jar-command/
      *
      * @return new builder

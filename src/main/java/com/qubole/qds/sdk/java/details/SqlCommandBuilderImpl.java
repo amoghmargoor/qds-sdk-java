@@ -1,0 +1,131 @@
+/**
+ * Copyright 2014- Qubole Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.qubole.qds.sdk.java.details;
+
+import com.google.common.collect.Maps;
+import com.qubole.qds.sdk.java.api.BaseCommand;
+import com.qubole.qds.sdk.java.api.SqlCommandBuilder;
+import com.qubole.qds.sdk.java.client.QdsClient;
+import org.codehaus.jackson.node.ObjectNode;
+
+import java.util.Map;
+
+public class SqlCommandBuilderImpl extends CommandBuilderImplBase implements SqlCommandBuilder
+{
+    private final ObjectNode node = QdsClientImpl.getMapper().createObjectNode();
+    private final Map<String, String> macros = Maps.newHashMap();
+
+    @Override
+    public SqlCommandBuilder query(String query)
+    {
+        node.put("query", query);
+        return this;
+    }
+
+    @Override
+    public SqlCommandBuilder scriptLocation(String scriptLocation)
+    {
+        node.put("script_location", scriptLocation);
+        return this;
+    }
+
+    @Override
+    public SqlCommandBuilder commandType(String commandType)
+    {
+        node.put("command_type", commandType);
+        return this;
+    }
+
+    @Override
+    public SqlCommandBuilder sampleSize(int sampleSize)
+    {
+        node.put("sample_size", sampleSize);
+        return this;
+    }
+
+    @Override
+    public SqlCommandBuilder approxModeProgress(double approxModeProgress)
+    {
+        node.put("approx_mode_progress", approxModeProgress);
+        return this;
+    }
+
+    @Override
+    public SqlCommandBuilder approxModeMaxRt(int approxModeMaxRt)
+    {
+        node.put("approx_mode_max_rt", approxModeMaxRt);
+        return this;
+    }
+
+    @Override
+    public SqlCommandBuilder approxModeMinRt(int approxModeMinRt)
+    {
+        node.put("approx_mode_min_rt", approxModeMinRt);
+        return this;
+    }
+
+    @Override
+    public SqlCommandBuilder approxAggregations(boolean approxAggregations)
+    {
+        node.put("approx_aggregations", approxAggregations);
+        return this;
+    }
+
+    @Override
+    public SqlCommandBuilder macro(String name, String value)
+    {
+        macros.put(name, value);
+        node.putPOJO("macros", macros);
+        return this;
+    }
+
+    @Override
+    public SqlCommandBuilder clusterLabel(String clusterLabel)
+    {
+        node.put("label", clusterLabel);
+        return this;
+    }
+
+    @Override
+    public SqlCommandBuilder name(String queryName) {
+        node.put("name", queryName);
+        return this;
+    }
+
+    @Override
+    public SqlCommandBuilder tags(String[] queryTags) {
+        node.putPOJO("tags", queryTags);
+        return this;
+    }
+
+    @Override
+    protected BaseCommand.COMMAND_TYPE getCommandType()
+    {
+        return BaseCommand.COMMAND_TYPE.SQL;
+    }
+
+    @Override
+    protected ObjectNode getEntity()
+    {
+        return node;
+    }
+
+    SqlCommandBuilderImpl(QdsClient client)
+    {
+        super(client);
+        node.put("command_type", "SqlCommand");
+    }
+}

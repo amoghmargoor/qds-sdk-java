@@ -34,7 +34,8 @@ public interface BaseCommand
         PIG,
         SHELL,
         COMPOSITE,
-        SPARK
+        SPARK,
+        SQL
     };
 
     public COMMAND_TYPE getCommandType();

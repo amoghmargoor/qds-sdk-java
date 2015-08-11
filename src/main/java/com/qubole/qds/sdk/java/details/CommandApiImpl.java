@@ -41,6 +41,11 @@ class CommandApiImpl implements CommandApi
     }
 
     @Override
+    public SqlCommandBuilder sql() {
+        return new SqlCommandBuilderImpl(client);
+    }
+
+    @Override
     public PageableInvokableBuilder<Commands> history()
     {
         return new GenericPageableInvokableBuilderImpl<Commands>(client, RequestDetails.retry(), Commands.class, "commands");
