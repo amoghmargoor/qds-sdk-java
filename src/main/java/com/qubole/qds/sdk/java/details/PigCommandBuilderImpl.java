@@ -15,10 +15,10 @@
  */
 package com.qubole.qds.sdk.java.details;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.qubole.qds.sdk.java.api.BaseCommand;
 import com.qubole.qds.sdk.java.api.PigCommandBuilder;
 import com.qubole.qds.sdk.java.client.QdsClient;
-import org.codehaus.jackson.node.ObjectNode;
 import java.util.Map;
 
 class PigCommandBuilderImpl extends CommandBuilderImplBase implements PigCommandBuilder

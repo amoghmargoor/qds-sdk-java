@@ -20,7 +20,7 @@ import com.qubole.qds.sdk.java.api.CompositeCommandBuilder;
 import com.qubole.qds.sdk.java.api.BaseCommand;
 import com.qubole.qds.sdk.java.client.QdsClient;
 import com.qubole.qds.sdk.java.entities.CommandResponse;
-import org.codehaus.jackson.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.util.ArrayList;
 

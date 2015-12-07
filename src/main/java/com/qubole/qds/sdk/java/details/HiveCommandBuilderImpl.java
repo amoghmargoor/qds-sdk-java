@@ -19,7 +19,7 @@ import com.google.common.collect.Maps;
 import com.qubole.qds.sdk.java.api.HiveCommandBuilder;
 import com.qubole.qds.sdk.java.api.BaseCommand;
 import com.qubole.qds.sdk.java.client.QdsClient;
-import org.codehaus.jackson.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.Map;
 
 public class HiveCommandBuilderImpl extends CommandBuilderImplBase implements HiveCommandBuilder

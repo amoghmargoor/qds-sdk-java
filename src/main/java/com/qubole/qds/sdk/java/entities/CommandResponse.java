@@ -15,7 +15,8 @@
  */
 package com.qubole.qds.sdk.java.entities;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)

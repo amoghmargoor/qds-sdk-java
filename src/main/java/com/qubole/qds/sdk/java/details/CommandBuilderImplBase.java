@@ -15,11 +15,11 @@
  */
 package com.qubole.qds.sdk.java.details;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.qubole.qds.sdk.java.api.BaseCommand;
 import com.qubole.qds.sdk.java.api.InvokableBuilder;
 import com.qubole.qds.sdk.java.client.QdsClient;
 import com.qubole.qds.sdk.java.entities.CommandResponse;
-import org.codehaus.jackson.node.ObjectNode;
 import java.io.IOException;
 
 abstract class CommandBuilderImplBase extends InvocationCallbackBase<CommandResponse> implements InvokableBuilder<CommandResponse>

@@ -15,6 +15,9 @@
  */
 package com.qubole.qds.sdk.java.details;
 
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
 import com.qubole.qds.sdk.java.api.ClusterApi;
@@ -28,9 +31,6 @@ import com.qubole.qds.sdk.java.client.QdsConfiguration;
 import com.qubole.qds.sdk.java.client.retry.RetryConnector;
 import com.qubole.qds.sdk.java.entities.SubCommands;
 import com.qubole.qds.sdk.java.entities.SubCommandsDeserializer;
-import org.codehaus.jackson.Version;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.module.SimpleModule;
 
 import javax.ws.rs.client.AsyncInvoker;
 import javax.ws.rs.client.Client;
@@ -79,7 +79,7 @@ public class QdsClientImpl implements QdsClient
         // register the deserialization handler for composite command
         SimpleModule module =
                 new SimpleModule("CommandResponseDeserializerModule",
-                        new Version(1, 0, 0, null));
+                        new Version(1, 0, 0, null, null, null));
         SubCommandsDeserializer ccDeserializer = new SubCommandsDeserializer();
         module.addDeserializer(SubCommands.class, ccDeserializer);
         mapper.registerModule(module);
