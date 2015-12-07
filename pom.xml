@@ -22,7 +22,7 @@
     <groupId>com.qubole.qds-sdk-java</groupId>
     <artifactId>qds-sdk-java</artifactId>
     <name>Qubole Data Service Java SDK</name>
-    <version>0.6.2-SNAPSHOT</version>
+    <version>0.6.2-nezha-0.1.0</version>
     <description>
         A Java library that provides the tools you need to
         authenticate with, and use the Qubole Data Service API.
@@ -270,15 +270,16 @@
             </build>
         </profile>
     </profiles>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
+   <distributionManagement>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>${distMgmtStagingId}</id>
+            <name>${distMgmtStagingName}</name>
+            <url>${distMgmtStagingUrl}</url>
         </repository>
+        <snapshotRepository>
+            <id>${distMgmtSnapshotsId}</id>
+            <name>${distMgmtSnapshotsName}</name>
+            <url>${distMgmtSnapshotsUrl}</url>
+        </snapshotRepository>
     </distributionManagement>
 </project>
